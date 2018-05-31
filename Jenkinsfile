@@ -11,7 +11,7 @@ pipeline {
         echo "${TEST_USER_PSW}"
       }
     }
-   stage('Deploy') {
+    stage('Deploy') {
       options {
         timeout(time: 30, unit: 'SECONDS') 
       }
@@ -25,7 +25,10 @@ pipeline {
       steps {
         echo "Deploying ${APP_VERSION}."
       }
-    }  environment {
+    }
+  }  
+
+  environment {
     MY_NAME = 'Mary'
     TEST_USER = credentials('test-user')
   }
@@ -33,4 +36,4 @@ pipeline {
     string(name: 'Name', defaultValue: 'whoever you are', description: 'Who should I say hi to?')
   }
 }
-}
+
